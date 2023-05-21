@@ -7,6 +7,7 @@ using std::vector;
 
 // This preceptron takes leg count and body size as a input and determines if it is a dog or human
 //  For dog leg count should be 4 and body size should be <= 5
+// You can edit the X_train and Y_train and the preceptron should be able to learn it
 vector<vector<int>> X_train = {
     {4, 4},
     {2, 8},
