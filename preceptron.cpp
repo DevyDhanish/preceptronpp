@@ -5,9 +5,8 @@
 using std::string;
 using std::vector;
 
-// leg count body size
-// dog body size <= 5
-// Human body size > 5
+// This preceptron takes leg count and body size as a input and determines if it is a dog or human
+//  For dog leg count should be 4 and body size should be <= 5
 vector<vector<int>> X_train = {
     {4, 4},
     {2, 8},
@@ -88,16 +87,17 @@ public:
                 int y_cap = predict(x_train_dataset[j]);
                 float loss = y_train_dataset[j] - y_cap;
 
+                // if prediction is right increment the number of correct prediction
+                if (y_cap == y_train_dataset[j])
+                {
+                    number_of_correct_prediction++;
+                }
+
+                // update the weights
                 for (int k = 0; k < weights.size(); k++)
                 {
                     // Preceptron learning rule weights += learning rate * loss * current input
                     weights[k] += learning_rate * loss * x_train_dataset[j][k];
-                }
-
-                // Update the weigths if the prediction is wrong else increment the number of correct prediction
-                if (y_cap == y_train_dataset[j])
-                {
-                    number_of_correct_prediction++;
                 }
 
                 result += loss * loss;
@@ -123,4 +123,4 @@ int main()
     return 0;
 }
 
-// 1 == true 0 == false
+// 1 == human 0 == dog
